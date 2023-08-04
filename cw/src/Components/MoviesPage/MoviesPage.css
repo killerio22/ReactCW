@@ -1,0 +1,44 @@
+.movie-item {
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-title {
+    visibility: hidden;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.movie-item:hover .movie-title {
+    visibility: visible;
+}
+
+.Movies{
+    text-align: center;
+}
+
+img{
+    width: 200px;
+}
+
+.pagination{
+    text-align: center;
+}
+
+.pagination > button{
+    background-color: darkgrey;
+    width: 10vw;
+}
+
+.TMDb{
+    width: 500px;
+    margin: 5px auto;
+    display: flex;
+}

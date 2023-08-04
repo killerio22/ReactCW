@@ -1,0 +1,12 @@
+.Theme{
+    display: flex;
+    margin: -22px 90vw;
+    background-color: rgba(0,0,0,0);
+    font-size: 40px;
+}
+button{
+    margin: 0 30px;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+}

@@ -1,0 +1,19 @@
+.Header{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    margin-bottom: 10px;
+}
+
+.Header a{
+    text-decoration: none;
+    color: rgb(255, 185, 0);
+}
+
+.Header a[class='active']{
+    color: rgb(72, 193, 196);
+    cursor: default;
+    font-weight: bolder;
+}
