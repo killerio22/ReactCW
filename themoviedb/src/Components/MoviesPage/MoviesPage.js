@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setMovies, setPage, setSelectedGenre } from '../../redux/moviesSlice';
 import './MoviesPage.css';
 import GenresList from '../GenresList/GenresList';
-import blueLongImage from 'C:/Курси_Okten/React_cw/cw/src/blue_long_2.svg';
+import blueLongImage from '../../blue_long_2.svg';
+import axios from "axios";
+import { selectMovies } from '../../redux/moviesSlice';
 
 const MoviesPage = () => {
-    const [movies, setMovies] = useState([]);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [selectedGenre, setSelectedGenre] = useState(null);
+    const dispatch = useDispatch();
+    const { list: movies, page, totalPages, selectedGenre } = useSelector(selectMovies);
 
     useEffect(() => {
         if (selectedGenre) {
@@ -29,11 +30,10 @@ const MoviesPage = () => {
                     page: page,
                 },
             });
-            setMovies(response.data.results);
-            setTotalPages(response.data.total_pages);
+            dispatch(setMovies(response.data));
         } catch (error) {
             console.error('Error fetching movies:', error);
-            setMovies([]);
+            dispatch(setMovies({ results: [], total_pages: 0 }));
         }
     };
 
@@ -48,34 +48,33 @@ const MoviesPage = () => {
                     with_genres: selectedGenre,
                 },
             });
-            setMovies(response.data.results);
-            setTotalPages(response.data.total_pages);
+            dispatch(setMovies(response.data));
         } catch (error) {
             console.error('Error fetching movies by genre:', error);
-            setMovies([]);
+            dispatch(setMovies({ results: [], total_pages: 0 }));
         }
     };
 
     const handlePreviousPage = () => {
         if (page > 1) {
-            setPage((prevPage) => prevPage - 1);
+            dispatch(setPage(page - 1));
         }
     };
 
     const handleNextPage = () => {
         if (page < totalPages) {
-            setPage((prevPage) => prevPage + 1);
+            dispatch(setPage(page + 1));
         }
     };
 
     const handleGenreSelect = (genreId) => {
-        setSelectedGenre(genreId);
-        setPage(1);
+        dispatch(setSelectedGenre(genreId));
+        dispatch(setPage(1));
     };
 
     return (
         <div>
-            <img src={blueLongImage} className="TMDb"/>
+            <img src={blueLongImage} className="TMDb" />
             <GenresList onGenreSelect={handleGenreSelect} />
             <div className="movies-list">
                 {movies.map((movie) => (

@@ -1,0 +1,26 @@
+.Header{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    margin-bottom: 10px;
+}
+
+.Header a{
+    text-decoration: none;
+    color: rgb(255, 185, 0);
+}
+.user{
+    align-items: end;
+    padding-top: 3vh;
+    padding-right: 0.5vw;
+}
+.Main{
+    margin: 0 auto;
+    padding-left: 29vw;
+}
+.search{
+    padding-right: 7vw;
+    padding-top: 7vh;
+}

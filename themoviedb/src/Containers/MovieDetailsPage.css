@@ -1,0 +1,17 @@
+.navigate{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+.Navigate{
+    border: none;
+    border-radius: 10px;
+    background-color: darkgrey;
+    height: 25px;
+}
+.MovieDetails{
+    text-align: center;
+    max-width: 800px;
+    height: 93.7vh;
+    margin: 0 auto;
+}
